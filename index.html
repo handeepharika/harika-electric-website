@@ -30,16 +30,18 @@ body{font-family:'DM Sans',sans-serif;color:#1A1A2E;background:#F8F6F2;overflow-
 .mobile-menu a{display:block;padding:16px 24px;color:rgba(255,255,255,.8);font-size:1rem;cursor:pointer;border-bottom:1px solid rgba(255,255,255,.06);text-decoration:none}
 
 /* HERO */
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;background:linear-gradient(135deg,#162A45,#1E3A5F 50%,#1B3A5C)}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:2;padding:100px 0 80px}
+.hero{position:relative;overflow:hidden;min-height:620px;display:flex;align-items:center;background:#0d1b2e}
+.hero-photo-panel{position:absolute;right:0;top:0;width:65%;height:100%;overflow:hidden}
+.hero-photo-panel img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.hero-left-fade{position:absolute;inset:0;background:linear-gradient(to right,#0d1b2e 36%,rgba(13,27,46,0.9) 50%,rgba(13,27,46,0.3) 68%,transparent 100%);z-index:1}
+.hero-arc{position:absolute;left:calc(35% - 70px);top:0;height:100%;width:140px;z-index:2;pointer-events:none}
+.hero-content{position:relative;z-index:3;width:50%;padding:100px 0 80px 8%}
 .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5.5vw,3.8rem);line-height:1.1;font-weight:700;color:#fff;margin-bottom:12px}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:8px;font-size:.95rem;font-weight:600;cursor:pointer;border:none;text-decoration:none}
 .btn-primary{background:#F5A623;color:#162A45}
 .btn-outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.3)}
-.hero-logo{animation:float 6s ease-in-out infinite;filter:drop-shadow(0 0 60px rgba(245,166,35,.15))}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-
 /* SERVICES */
 .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
 .service-card{background:#F8F6F2;border-radius:16px;padding:36px 28px}
@@ -109,25 +111,32 @@ body{font-family:'DM Sans',sans-serif;color:#1A1A2E;background:#F8F6F2;overflow-
 
 <!-- HERO -->
 <section class="hero" id="hero">
-<div class="container hero-grid">
+<div class="hero-photo-panel">
+  <img src="hero_photo.jpg" alt="Harika Electric job site">
+</div>
+<div class="hero-left-fade"></div>
+<svg class="hero-arc" viewBox="0 0 140 600" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="45,0 140,0 140,600 45,600 70,450 10,300 70,150" fill="#F5A623" opacity="0.88"/>
+  <polygon points="55,0 75,0 92,148 42,300 92,452 75,600 55,600 28,450 78,300 28,150" fill="#ffd166" opacity="0.45"/>
+</svg>
+<div class="hero-content">
   <div style="color:#fff">
-    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(245,166,35,.12);border:1px solid rgba(245,166,35,.25);border-radius:100px;padding:6px 16px;margin-bottom:24px;font-size:.8rem;font-weight:500;color:#F5A623;letter-spacing:1px;text-transform:uppercase">
-      <span style="width:6px;height:6px;border-radius:50%;background:#F5A623;animation:pulse 2s infinite"></span> Licensed Electrician &bull; Kelowna, BC
+    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(245,166,35,.12);border:1px solid rgba(245,166,35,.25);border-radius:100px;padding:6px 16px;margin-bottom:24px;font-size:.8rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#F5A623">
+      <span>Licensed Electrician</span><span style="opacity:.4">&bull;</span><span>Kelowna, BC</span>
     </div>
-    <h1>Powering Kelowna With <span style="color:#F5A623">Precision</span> &amp; Care</h1>
-    <div style="font-size:1.15rem;font-style:italic;color:#F5A623;opacity:.9;margin-bottom:20px">&mdash; Connecting for Life &mdash;</div>
-    <p style="font-size:1.05rem;line-height:1.7;opacity:.8;max-width:480px;margin-bottom:36px">Residential and commercial electrical services you can trust. From panel upgrades to full installations, Harika Electric Inc. delivers safe, code-compliant work every time.</p>
-    <div style="display:flex;gap:16px;flex-wrap:wrap">
-      <a href="tel:7788830500" class="btn btn-primary">&#9742; Call Now</a>
-      <a class="btn btn-outline" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Our Services &darr;</a>
+    <h1 class="st">Powering Kelowna<br>With Precision<br><span style="color:#F5A623">&amp; Care</span></h1>
+    <p style="font-size:.85rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:20px">&mdash; Connecting for Life &mdash;</p>
+    <p style="font-size:1.1rem;line-height:1.7;color:rgba(255,255,255,.8);max-width:480px;margin-bottom:32px">Residential and commercial electrical services you can trust. From panel upgrades to full installations, Harika Electric Inc. delivers safe, code-compliant work every time.</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:40px">
+      <a href="tel:+12502800663" class="btn btn-primary">&#9742; Call Now</a>
+      <a href="#services" class="btn btn-outline">Our Services &#8595;</a>
     </div>
-    <div style="display:flex;gap:40px;margin-top:48px;padding-top:32px;border-top:1px solid rgba(255,255,255,.1);flex-wrap:wrap">
-      <div><div style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#F5A623">100%</div><div style="font-size:.8rem;opacity:.6;color:#fff">Licensed &amp; Insured</div></div>
-      <div><div style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#F5A623">24/7</div><div style="font-size:.8rem;opacity:.6;color:#fff">Emergency Service</div></div>
-      <div><div style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#F5A623">&#10035; 5.0</div><div style="font-size:.8rem;opacity:.6;color:#fff">37 Google Reviews</div></div>
+    <div style="display:flex;gap:24px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:8px;font-size:.85rem;color:rgba(255,255,255,.7)"><span style="color:#F5A623">&#10003;</span> 100% Licensed &amp; Insured</div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:.85rem;color:rgba(255,255,255,.7)"><span style="color:#F5A623">&#10003;</span> 24/7 Emergency Service</div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:.85rem;color:rgba(255,255,255,.7)"><span style="color:#F5A623">&#10035;</span> 5.0&nbsp; 37 Google Reviews</div>
     </div>
   </div>
-  <div class="hero-visual" style="display:flex;justify-content:center;align-items:center"><img src="hero_photo.jpg" alt="Harika Electric Inc." style="width:420px;height:560px;object-fit:cover;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.3)"></div>
 </div>
 </section>
 
